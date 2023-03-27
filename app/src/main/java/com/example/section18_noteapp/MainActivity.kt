@@ -18,7 +18,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Section18_NoteAppTheme {
-                NoteScreen()
+                Surface(color = MaterialTheme.colors.background) {
+                    NoteScreen()
+                }
             }
         }
     }
