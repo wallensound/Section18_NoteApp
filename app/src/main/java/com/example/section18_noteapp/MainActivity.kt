@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.section18_noteapp.screen.NoteScreen
 import com.example.section18_noteapp.ui.theme.Section18_NoteAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Section18_NoteAppTheme {
-
+                NoteScreen()
             }
         }
     }
