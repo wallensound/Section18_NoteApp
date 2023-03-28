@@ -24,6 +24,7 @@ import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.bawp.jetnote.util.formatDate
 import com.example.section18_noteapp.model.Note
 import java.time.format.DateTimeFormatter
 
@@ -86,7 +87,7 @@ fun NoteCard(note: Note, onClicked: (Note) -> Unit) {
             Column(modifier = Modifier.padding(5.dp)) {
                 Text(text = note.title, style = MaterialTheme.typography.h6)
                 Text(text = note.note, style = MaterialTheme.typography.body1)
-                Text(text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")), style = MaterialTheme.typography.caption)
+                Text(text = formatDate(note.entryDate.time), style = MaterialTheme.typography.caption)
             }
             Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth().padding(end = 30.dp)) {
                 Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete Note", modifier = Modifier.clickable {
