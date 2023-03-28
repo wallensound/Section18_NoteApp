@@ -8,9 +8,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.section18_noteapp.model.Note
 import com.example.section18_noteapp.screen.NoteScreen
+import com.example.section18_noteapp.screen.NoteViewModel
 import com.example.section18_noteapp.ui.theme.Section18_NoteAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,9 +24,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             Section18_NoteAppTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    NoteScreen()
+                    NotesApp()
                 }
             }
         }
     }
+}
+
+@Composable
+fun NotesApp(noteViewModel: NoteViewModel = viewModel()) {
+    val notes = noteViewModel.getNotes()
+    val title = noteViewModel.title()
+    val note = noteViewModel.note()
+
+    NoteScreen(
+        notes = notes,
+        title = title,
+        note = note,
+        onAddNote = { noteViewModel.addNote(it) },
+        onRemoveNote = { noteViewModel.removeNote(it) })
 }
